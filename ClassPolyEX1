@@ -1,0 +1,106 @@
+exercice1
+import numpy as np
+import matplotlib.pyplot as plt
+class polynome:
+    def __init__(self,lc):
+        self.coeff=lc
+        self.degree=len(lc)
+        
+        
+        
+    
+    def __repr__(self):
+if self.coeffs[0]: 
+            poly = str(self.coeffs[0]) 
+        else: 
+            poly = "" 
+        if self.degre >= 1: 
+            poly = poly + (("+" + str(self.coeffs[1])) if self.coeffs[1] >= 0 else str(self.coeffs[1])) + "X" 
+        if self.degre >= 2: 
+            for i in range(2, self.degre + 1): 
+                if self.coeffs[i]: 
+                    poly = poly + (("+" + str(self.coeffs[i])) if self.coeffs[i] >= 0 else str(self.coeffs[i])) + "X^" + str( 
+                        i) 
+        return poly
+        
+        
+        
+        
+    def __call__(self,x):
+        valeurpoly=0
+        j=0
+        while true:
+            (j<=valeurpoly):
+                valeurpoly=valeurpoly*x+lc[len(lc)-j]
+                j=j+1
+            return valeurpoly
+            
+    def __getitem__(self,n):
+             m = "-1"
+             for i in range(len (self.coefs)):
+              if self.coef(i) != 0:
+                                  m = i
+                            self.degre = m
+                               return m
+        
+    def add(self, other):
+        mes_poly = []
+        mes_self_coeffs = self.coeffs[::-1]
+        mes_other_coeffs = other.coeffs[::-1]
+    
+        for n in range(len(mes_self_coeffs)):
+            if n <= len(mes_other_coeffs) - 1:
+                mes_poly.append(mes_self_coeffs[n] + mes_other_coeffs[n])
+            else:
+                mes_poly.append(mes_self_coeffs[n])
+                
+        if len(mes_other_coeffs) > len(mes_self_coeffs):
+            for n in range(len(mes_self_coeffs), len(mes_other_coeffs)):
+                mes_poly.append(mes_other_coeffs[n])
+                
+    
+        new_poly = mes_poly[::-1]
+        return polynome(new_poly)
+    def __add__(self, other):
+        return self.add(other)
+        
+        
+    def mul(self, other):
+       
+        new_poly = polynome([0])
+        mes_self_coeffs = self.coeffs[::-1]
+        mes_other_coeffs = other.coeffs[::-1]
+        
+
+        for n in range(len(mes_self_coeffs)):
+            if n == 0:
+                mes_poly_term = [r * mes_self_coeffs[n] for \
+                r in mes_other_coeffs]
+            else:
+                mes_poly_term = [0 for m in range(n)] + \
+                [r * mes_self_coeffs[n] for r in mes_other_coeffs]
+            poly_term = mes_poly_term[::-1]
+            new_poly = new_poly + polynome(poly_term)
+        return new_poly
+        
+        
+    def __mul__(self, other):
+        return self.mul(other)
+        
+        
+        
+    def puissace(self, d, X='X'):
+        if d == 0:
+        return ''
+        if d == 1:
+        return X
+        return X+'^{}'.format(d)
+        
+    def  trace (self, xmin, xmax):
+        x=np.linspace(self.xmin,self.xmax,1000)
+        return x
+        class Monome(polynome):
+            def  __init__ (self, c, d):
+        self.coeff=c
+        self.degree=d
+        
